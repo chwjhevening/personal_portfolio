@@ -86,6 +86,19 @@ main {
 * home css 
 */
 
+.home_container {
+  outline-style: solid;
+  outline-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
 .home_top_section {
+  padding: 20px 20px;
   display: flex;
+}
+
+.profile_img {
+  height: 80%;
+  outline-style: dashed;
+  border-radius: 25%;
 }
