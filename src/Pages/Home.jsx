@@ -1,15 +1,10 @@
 import React from "react";
+import default_profile_pic from '../Assets/profile_pic.jpg'
 
 const Home = () => {
     return (
-        <div className="home_container">
-            <div className="home_top_section">
-                <img id="profile_img" src="../img/profile_pic.jpg" />
-                <div className="home_top_right">
-                    <h1>Name</h1>
-                    <h3>Junior, Computer Science</h3>
-                </div>
-            </div>
+        <div className="main_container">
+            this is home
         </div>
     )
 }

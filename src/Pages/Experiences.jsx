@@ -2,7 +2,7 @@ import React from "react";
 
 const Experiences = () => {
     return (
-        <div>
+        <div className="main_container">
             <h1>
                 This is Experiences ajshjgklasjdlkajsdlkahsldkjaslkdj
             </h1>
