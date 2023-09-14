@@ -20,7 +20,7 @@ const App = () => {
         <Sidebar>
           <Topbar signedIn={signedIn} openLoginPage={setOpenLogin} signIn={signIn} />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home signedIn={signedIn} />} />
             <Route path="/home" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/experiences" element={<Experiences />} />

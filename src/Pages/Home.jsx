@@ -1,9 +1,9 @@
 import React from "react";
-import default_profile_pic from '../Assets/profile_pic.jpg'
 
-const Home = () => {
+const Home = ({ signedIn }) => {
     return (
         <div className="main_container">
+            {signedIn ? <div>signed in</div> : <div>nope</div>}
             this is home
         </div>
     )

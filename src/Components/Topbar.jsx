@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap-buttons';
 const Topbar = ({ signedIn, openLoginPage, signIn }) => {
     return (
         <div className="top_bar">
-            <img id="profile_img" src={default_profile_pic} />
+            <img id="profile_img" src={default_profile_pic} alt="Default profile" />
             <div className="basic_info">
                 <h1>Name</h1>
                 <h3>Junior, Computer Science</h3>

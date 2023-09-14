@@ -14,17 +14,17 @@ const Login = ({ signIn, closeLogin }) => {
                     </Button>
                 </div>
                 <form>
-                    <label htmlFor="username">
+                    <h1 htmlFor="username">
                         Username
-                    </label>
+                    </h1>
                     <input type="text" onChange={(e) => setUsername(e.target.value)} username="username" id="username" name="username" />
-                    <label htmlFor="password">
+                    <h1 htmlFor="password">
                         Password
-                    </label>
+                    </h1>
                     <input type="text" onChange={(e) => setPassword(e.target.value)} password="password" id="password" name="password" />
                 </form>
                 <Button className="submit_button" onClick={() => {
-                    if (username == "admin" && password == "123456") {
+                    if (username === "admin" && password === "123456") {
                         signIn(true)
                         closeLogin(false)
                     }
