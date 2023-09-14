@@ -12,12 +12,13 @@ import Topbar from './Components/Topbar';
 const App = () => {
 
   const [openLogin, setOpenLogin] = useState(false)
+  const [signedIn, signIn] = useState(false)
 
   return (
     <div>
       <BrowserRouter>
         <Sidebar>
-          <Topbar openLoginPage={setOpenLogin} />
+          <Topbar signedIn={signedIn} openLoginPage={setOpenLogin} signIn={signIn} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
@@ -26,7 +27,7 @@ const App = () => {
           </Routes>
         </Sidebar>
       </BrowserRouter>
-      {openLogin && <Login closeLogin={setOpenLogin} />}
+      {openLogin && <Login signIn={signIn} closeLogin={setOpenLogin} />}
     </div>
   );
 };
