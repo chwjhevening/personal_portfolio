@@ -2,6 +2,8 @@ import React from "react";
 
 import default_profile_pic from '../Assets/profile_pic.jpg'
 import { Button } from 'react-bootstrap-buttons';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const Topbar = ({ signedIn, openLoginPage, signIn }) => {
     return (
@@ -20,9 +22,13 @@ const Topbar = ({ signedIn, openLoginPage, signIn }) => {
             <Button
                 style={{ display: signedIn ? "block" : "none" }}
                 className="login_button"
-                onClick={() => signIn(false)}>
+                onClick={() => {
+                    signIn(false)
+                    NotificationManager.success('You Are Successfully Logged Out!', 'Success');
+                }}>
                 Log Out
             </Button>
+            <NotificationContainer />
         </div>
     )
 }
