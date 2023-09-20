@@ -8,6 +8,7 @@ import Experiences from './Pages/Experiences.jsx';
 import Login from './Components/Login';
 import { useState } from "react"
 import Topbar from './Components/Topbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 
@@ -23,7 +24,7 @@ const App = () => {
             <Route path="/" element={<Home signedIn={signedIn} />} />
             <Route path="/home" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/experiences" element={<Experiences />} />
+            <Route path="/experiences" element={<Experiences signedIn={signedIn} />} />
           </Routes>
         </Sidebar>
       </BrowserRouter>

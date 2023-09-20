@@ -1,3 +1,6 @@
+/* 
+* general
+*/
 * {
   margin: 0;
   padding: 0;
@@ -12,20 +15,34 @@ html {
   margin: 0;
 }
 
+.page_title {
+  padding-left: 10px;
+  /* padding-top: 10px; */
+}
+
+.edit {
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+.edit :hover {
+  cursor: pointer;
+}
+
 /* 
 * sidebar css
 */
 
 .sidebar_container {
   display: flex;
-  height: 100%;
+  height: 100vh;
 }
 
-main {
+.main_container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -187,11 +204,49 @@ main {
 /* 
 * main container
 */
-.main_container {
+.main_page_container {
   outline-style: solid;
   outline-color: rgba(0, 0, 0, 0.3);
   border-radius: 20px;
-  padding: 20px 20px;
+  padding: 10px 10px;
   margin: 15px 15px 15px 15px;
   flex: 1;
+  overflow-y: scroll;
+  flex: 1;
+}
+
+/* 
+* Card css
+*/
+.card_container {
+  outline-style: solid;
+  outline-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  position: relative;
+}
+
+#card_image {
+  height: 120px;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+/* 
+* editPersonalInfo
+*/
+.edit_personal_info_description {
+  border-radius: 5px;
+  width: 100%; 
+  height: 60px; 
+  border: 1px solid #999999; 
+  padding: 15px;
+}
+
+.form_label {
+  padding_bottom: 20px;
 }
