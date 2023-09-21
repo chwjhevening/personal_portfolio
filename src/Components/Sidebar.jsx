@@ -9,34 +9,18 @@ const Sidebar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
-        {
-            path: "/",
-            name: "Home",
-            icon: <BsFillHouseDoorFill />
-        },
-        {
-            path: "/projects",
-            name: "Projects",
-            icon: <BsFillLightbulbFill />
-        },
-        {
-            path: "/experiences",
-            name: "Experiences",
-            icon: <BsLaptopFill />
-        }
+        // TODO: add paths to home, project, experience page
     ]
     return (
         <div className="sidebar_container">
-            <div style={{ width: isOpen ? "300px" : "100px" }} className="sidebar">
+            <div className="sidebar">
                 {
-                    menuItem.map((item, index) => (
-                        <NavLink to={item.path} key={index} className="link" activeclassname="active">
-                            <div className="icon">{item.icon}</div>
-                            <div style={{ display: isOpen ? "block" : "none" }} className="link_text">{item.name}</div>
-                        </NavLink>
-                    ))
+                    // TODO: using map to loop through menuItem to create navlink for all three navigation buttons
+                    // TODO: hide the texts when sidebar is collapsed 
+                    // hint, classname for NavLink is link, classname for icon is icon, and classname for the text on the links is link_text
                 }
-                <div className='toggle_container' onClick={toggle}>
+                <div className='toggle_container'>
+                    {/* TODO:  add function to make the sidebar collapsable*/}
                     <div className="extention_toggle">
                         <AiOutlineMenu />
                     </div>

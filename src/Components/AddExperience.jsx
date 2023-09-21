@@ -20,7 +20,10 @@ function AddExperience(props) {
 
     return (
         <>
-            <div className="add_button" onClick={handleShow} style={{ display: props.signedIn ? "block" : "none" }}>
+            <div className="add_button"
+            // TODO: make it that this button only shows when signed in 
+            // TODO: open the pop up modal when clicked
+            >
                 <AiOutlinePlus />
             </div>
 
@@ -35,26 +38,11 @@ function AddExperience(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <form id='editmodal' >
-                        {temp_image && <img id='profile_img' src={temp_image} alt='temp profile' />
-                        }                        <input type='file' name='experience_pic' onChange={handleImage} />
-                        <h2 htmlFor="card_title_add" className='form_label'>
-                            Experience Title
-                        </h2>
-                        <input type="text" className='edit_personal_info_description'
-                            onChange={(e) => setCardTitle(e.target.value)}
-                            card_title_add="card_title_add"
-                            id="fullName"
-                            name="card_title_add" />
-                        <h2 htmlFor="description_add" className='form_label'>
-                            Experience Description
-                        </h2>
-                        <input className='edit_personal_info_description'
-                            form='editmidal'
-                            type="text"
-                            onChange={(e) => setDescription(e.target.value)}
-                            description_add="description_add"
-                            id="description_add"
-                            name="description_add" />
+                        {/* TODO: Create a similar form like the login page
+                        with the addition of file input on the top
+                        make sure you add a preview of the image above the file upload button when there is one uploaded
+                        Hint: the className for the image you can use profile_pic 
+                        */}
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -62,9 +50,7 @@ function AddExperience(props) {
                         Close
                     </Button>
                     <Button variant="primary" form='editmodal' onClick={() => {
-                        handleClose()
-                        props.newExperience(card_title_add, description_add, temp_image)
-                        // setCardPic(temp_image)
+                        // close pop up and update experience
                     }}>
                         Update
                     </Button>

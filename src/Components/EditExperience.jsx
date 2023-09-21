@@ -20,7 +20,10 @@ function EditExperience(props) {
 
     return (
         <>
-            <div className="edit" onClick={handleShow} style={{ display: props.signedIn ? "block" : "none" }}>
+            <div className="edit"
+            // TODO: make it that this button only shows when signed in 
+            // TODO: open the pop up modal when clicked
+            >
                 <AiOutlineEdit />
             </div>
 
@@ -35,28 +38,10 @@ function EditExperience(props) {
                 </Modal.Header>
                 <Modal.Body>
                     <form id='editmodal' >
-                        <img id='profile_img' src={temp_image} alt='temp profile' />
-                        <input type='file' name='profile_pic' onChange={handleImage} />
-                        <h2 htmlFor="card_title_edit" className='form_label'>
-                            Experience Title
-                        </h2>
-                        <input type="text" className='edit_personal_info_description'
-                            onChange={(e) => setCardTitle(e.target.value)}
-                            card_title_edit="card_title_edit"
-                            id="fullName"
-                            name="card_title_edit"
-                            defaultValue={card_title_edit} />
-                        <h2 htmlFor="description_edit" className='form_label'>
-                            Experience Description
-                        </h2>
-                        <input className='edit_personal_info_description'
-                            form='editmidal'
-                            type="text"
-                            onChange={(e) => setDescription(e.target.value)}
-                            description_edit="description_edit"
-                            id="description_edit"
-                            name="description_edit"
-                            defaultValue={description_edit} />
+                        {/* TODO: /* TODO: Create a similar form like the login page
+                                with the addition of file input on the top
+                                make sure you add a preview of the image above the file upload button 
+                            Hint: the className for the image you can use profile_pic */}
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -64,9 +49,7 @@ function EditExperience(props) {
                         Close
                     </Button>
                     <Button variant="primary" form='editmodal' onClick={() => {
-                        handleClose()
-                        props.updateExperience(props.id, card_title_edit, description_edit, temp_image)
-                        // setCardPic(temp_image)
+                        // TODO: close pop up and update experience card
                     }}>
                         Update
                     </Button>

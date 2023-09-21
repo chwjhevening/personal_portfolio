@@ -48,24 +48,11 @@ const Experiences = ({ signedIn }) => {
     ])
 
     function updateExperience(id, newTitle, newDescription, newImage) {
-        const updatedExperiences = experienceList.map((experience) => {
-            if (id === experience.id) {
-                return { ...experience, title: newTitle, description: newDescription, image: newImage };
-            }
-
-            return experience;
-        });
-        setExperiences(updatedExperiences);
+        // TODO: map through the experienceList, find the experience needed to be updated, update it, and update the experienceList
     }
 
     function newExperience(newTitle, newDescription, newImage) {
-        const newExperience = {
-            id: uuidv4(),
-            title: newTitle,
-            description: newDescription,
-            image: newImage,
-        };
-        setExperiences([...experienceList, newExperience]);
+        // TODO: create experience object with info given, with an id generated with uuidv4 then update experienceList 
     }
 
     return (
@@ -99,15 +86,7 @@ const Experiences = ({ signedIn }) => {
                             editExperience={editExperience}
                         />)
 
-                    }
-
-                        // <div key={index}>
-                        //     <Card imgSrc={item.image}
-                        //         cardTitle={item.title}
-                        //         cardDesc={item.description}
-                        //         signedIn={signedIn} />
-                        // </div>
-                    )
+                    })
                 }
             </ul>
         </div>

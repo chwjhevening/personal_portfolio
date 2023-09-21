@@ -12,9 +12,7 @@ const Topbar = ({ signedIn, openLoginPage, signIn }) => {
     const [profile_pic, setProfilePic] = useState(default_profile_pic)
 
     function updateTopBar(name, newDescription) {
-        setFullName(name)
-        setDescription(newDescription)
-        // setProfilePic(URL.createObjectURL())
+        // TODO: set the new topbar information
     }
 
     return (
@@ -32,18 +30,17 @@ const Topbar = ({ signedIn, openLoginPage, signIn }) => {
                 profilePic={profile_pic}
                 setProfilePic={setProfilePic} />
             <Button
-                style={{ display: signedIn ? "none" : "block" }}
+                // TODO: Add line to hide this button when logged in
                 className="login_button"
-                onClick={() => openLoginPage(true)}>
+            // TODO: Add line to turn on login pop up
+            >
                 Log In
             </Button>
             <Button
-                style={{ display: signedIn ? "block" : "none" }}
+                // TODO: Add line to hide this button when logged out
                 className="login_button"
-                onClick={() => {
-                    signIn(false)
-                    NotificationManager.success('You Are Successfully Logged Out!', 'Success');
-                }}>
+            // TODO: Add function to show notification with message 'You Are Successfully Logged Out!' by using NotificationManager
+            >
                 Log Out
             </Button>
             <NotificationContainer />
