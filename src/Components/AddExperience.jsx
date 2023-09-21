@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { AiOutlineEdit } from 'react-icons/ai';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 
-function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profilePic, setProfilePic }) {
-    const [full_name_edit, setName] = useState(fullName)
-    const [description_edit, setDescription] = useState(description)
+function AddExperience(props) {
+    const [card_title_add, setCardTitle] = useState('')
+    const [description_add, setDescription] = useState('')
     const [show, setShow] = useState(false);
-    const [temp_image, setTempImg] = useState(profilePic)
+    const [temp_image, setTempImg] = useState()
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -20,8 +20,8 @@ function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profi
 
     return (
         <>
-            <div className="edit" onClick={handleShow} style={{ display: signedIn ? "block" : "none" }}>
-                <AiOutlineEdit />
+            <div className="add_button" onClick={handleShow} style={{ display: props.signedIn ? "block" : "none" }}>
+                <AiOutlinePlus />
             </div>
 
             <Modal
@@ -35,28 +35,26 @@ function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profi
                 </Modal.Header>
                 <Modal.Body>
                     <form id='editmodal' >
-                        <img id='profile_img' src={temp_image} alt='temp profile' />
-                        <input type='file' name='profile_pic' onChange={handleImage} />
-                        <h2 htmlFor="full_name_edit" className='form_label'>
-                            Full Name
+                        {temp_image && <img id='profile_img' src={temp_image} alt='temp profile' />
+                        }                        <input type='file' name='experience_pic' onChange={handleImage} />
+                        <h2 htmlFor="card_title_add" className='form_label'>
+                            Experience Title
                         </h2>
                         <input type="text" className='edit_personal_info_description'
-                            onChange={(e) => setName(e.target.value)}
-                            full_name_edit="full_name_edit"
+                            onChange={(e) => setCardTitle(e.target.value)}
+                            card_title_add="card_title_add"
                             id="fullName"
-                            name="full_name_edit"
-                            defaultValue={full_name_edit} />
-                        <h2 htmlFor="description_edit" className='form_label'>
-                            Description
+                            name="card_title_add" />
+                        <h2 htmlFor="description_add" className='form_label'>
+                            Experience Description
                         </h2>
                         <input className='edit_personal_info_description'
                             form='editmidal'
                             type="text"
                             onChange={(e) => setDescription(e.target.value)}
-                            description_edit="description_edit"
-                            id="description_edit"
-                            name="description_edit"
-                            defaultValue={description_edit} />
+                            description_add="description_add"
+                            id="description_add"
+                            name="description_add" />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
@@ -65,8 +63,8 @@ function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profi
                     </Button>
                     <Button variant="primary" form='editmodal' onClick={() => {
                         handleClose()
-                        updateTopBar(full_name_edit, description_edit)
-                        setProfilePic(temp_image)
+                        props.newExperience(card_title_add, description_add, temp_image)
+                        // setCardPic(temp_image)
                     }}>
                         Update
                     </Button>
@@ -76,4 +74,4 @@ function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profi
     );
 }
 
-export default EditPersonalInfo;
+export default AddExperience;

@@ -9,20 +9,28 @@ import EditPersonalInfo from "./EditPersonalInfo";
 const Topbar = ({ signedIn, openLoginPage, signIn }) => {
     const [fullName, setFullName] = useState('Name')
     const [description, setDescription] = useState('Junior, Computer Science')
+    const [profile_pic, setProfilePic] = useState(default_profile_pic)
 
     function updateTopBar(name, newDescription) {
         setFullName(name)
         setDescription(newDescription)
+        // setProfilePic(URL.createObjectURL())
     }
 
     return (
         <div className="top_bar">
-            <img id="profile_img" src={default_profile_pic} alt="Default profile" />
+            <img id="profile_img" src={profile_pic} alt="Default profile" />
             <div>
                 <h1>{fullName}</h1>
                 <h3>{description}</h3>
             </div>
-            <EditPersonalInfo signedIn={signedIn} fullName={fullName} description={description} updateTopBar={updateTopBar} />
+            <EditPersonalInfo
+                signedIn={signedIn}
+                fullName={fullName}
+                description={description}
+                updateTopBar={updateTopBar}
+                profilePic={profile_pic}
+                setProfilePic={setProfilePic} />
             <Button
                 style={{ display: signedIn ? "none" : "block" }}
                 className="login_button"
