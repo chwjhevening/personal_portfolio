@@ -21,8 +21,10 @@ function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profi
     return (
         <>
             <div className="edit"
-            // TODO: make it that this button only shows when signed in 
-            // TODO: open the pop up modal when clicked
+                // DONE: make it that this button only shows when signed in 
+                style={{ display: signedIn ? "block" : "none" }}
+                // DONE: open the pop up modal when clicked
+                onClick={handleShow}
             >
                 <AiOutlineEdit />
             </div>
@@ -37,19 +39,46 @@ function EditPersonalInfo({ signedIn, fullName, description, updateTopBar, profi
                     <Modal.Title>Update Personal Info</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {/* TODO: Create a similar form like the login page
-                                with the addition of file input on the top
-                                make sure you add a preview of the image above the file upload button
-                    Hint: className for each input header is form_label and the className for both input text is edit_personal_info_description
+                    {/* DONE: Create a similar form like the login page
+                              with the addition of file input on the top
+                              make sure you add a preview of the image above the file upload button
+                        Hint: className for each input header is form_label and the className for both input text is edit_personal_info_description
                     */}
-                    <form id='editmodal' ></form>
+                    <form id='editmodal' >
+                        <h2 className='form_label'>
+                            Profile Picture
+                        </h2>
+                        <div className='edit_personal_info_description'>
+                            <input className='' type="file" onChange={(e) => handleImage(e)}/>
+                            <img src={temp_image} width="32" height="32" alt="..."/>
+                        </div>
+                        <h2 className='form_label'>
+                            Name
+                        </h2>
+                        <input className='edit_personal_info_description' type="text"
+                            placeholder={fullName}
+                            value={full_name_edit}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <h2 className='form_label'>
+                            Description
+                        </h2>
+                        <input className='edit_personal_info_description' type="text"
+                            placeholder={description}
+                            value={description_edit}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="primary" form='editmodal' onClick={() => {
-                        // TODO: close popup, update topbar and set profile picture
+                        // DONE: close popup, update topbar and set profile picture
+                        updateTopBar(full_name_edit, description_edit);
+                        setProfilePic(temp_image);
+                        handleClose();
                     }}>
                         Update
                     </Button>

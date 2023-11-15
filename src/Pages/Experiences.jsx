@@ -6,7 +6,6 @@ import Experience from "../Components/ExperienceCard"
 import AddExperience from "../Components/AddExperience";
 
 
-
 const Experiences = ({ signedIn }) => {
     var [experienceList, setExperiences] = useState([
         {
@@ -48,11 +47,28 @@ const Experiences = ({ signedIn }) => {
     ])
 
     function updateExperience(id, newTitle, newDescription, newImage) {
-        // TODO: map through the experienceList, find the experience needed to be updated, update it, and update the experienceList
+        // DONE: map through the experienceList, find the experience needed to be updated, update it, and update the experienceList
+        const newExperienceList = experienceList.map((item) => {
+            if (id === item.id) return {
+                id: item.id,
+                image: newImage,
+                title: newTitle,
+                description: newDescription,
+            };
+            return item;
+        })
+        setExperiences(newExperienceList)
     }
 
     function newExperience(newTitle, newDescription, newImage) {
-        // TODO: create experience object with info given, with an id generated with uuidv4 then update experienceList 
+        // DONE: create experience object with info given, with an id generated with uuidv4 then update experienceList 
+        const newExperience = {
+            id: uuidv4(),
+            image: newImage,
+            title: newTitle,
+            description: newDescription,
+        }
+        setExperiences([...experienceList, newExperience])
     }
 
     return (
@@ -63,7 +79,6 @@ const Experiences = ({ signedIn }) => {
                     newExperience={newExperience}
                     signedIn={signedIn} />
             </h1>
-
             <ul>
                 {
                     experienceList.map((experience) => {
@@ -85,7 +100,6 @@ const Experiences = ({ signedIn }) => {
                             image={experience.image}
                             editExperience={editExperience}
                         />)
-
                     })
                 }
             </ul>

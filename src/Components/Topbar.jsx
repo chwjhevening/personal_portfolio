@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap-buttons';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 import EditPersonalInfo from "./EditPersonalInfo";
+import Login from "./Login";
 
 const Topbar = ({ signedIn, openLoginPage, signIn }) => {
     const [fullName, setFullName] = useState('Name')
@@ -12,7 +13,9 @@ const Topbar = ({ signedIn, openLoginPage, signIn }) => {
     const [profile_pic, setProfilePic] = useState(default_profile_pic)
 
     function updateTopBar(name, newDescription) {
-        // TODO: set the new topbar information
+        // DONE: set the new topbar information
+        setFullName(name);
+        setDescription(newDescription);
     }
 
     return (
@@ -30,16 +33,23 @@ const Topbar = ({ signedIn, openLoginPage, signIn }) => {
                 profilePic={profile_pic}
                 setProfilePic={setProfilePic} />
             <Button
-                // TODO: Add line to hide this button when logged in
+                // DONE: Add line to hide this button when logged in
+                style={{ display: signedIn ? "none" : "block" }}
                 className="login_button"
-            // TODO: Add line to turn on login pop up
+                // DONE: Add line to turn on login pop up
+                onClick={openLoginPage}
             >
                 Log In
             </Button>
             <Button
-                // TODO: Add line to hide this button when logged out
+                // DONE: Add line to hide this button when logged out
+                style={{ display: signedIn ? "block" : "none" }}
                 className="login_button"
-            // TODO: Add function to show notification with message 'You Are Successfully Logged Out!' by using NotificationManager
+                // DONE: Add function to show notification with message 'You Are Successfully Logged Out!' by using NotificationManager
+                onClick={()=> {
+                    signIn(false)
+                    NotificationManager.success('You Are Successfully Logged Out!', 'Logout Success', 2000)
+                }}
             >
                 Log Out
             </Button>

@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 
-function AddExperience(props) {
+function AddProject(props) {
     const [card_title_add, setCardTitle] = useState(null)
     const [description_add, setDescription] = useState(null)
     const [show, setShow] = useState(false);
@@ -41,7 +41,7 @@ function AddExperience(props) {
                 errorMessage={errorMessage}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Experience</Modal.Title>
+                    <Modal.Title>Add Project</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form id='editmodal' >
@@ -82,7 +82,7 @@ function AddExperience(props) {
                         // close pop up and update experience
                         if (card_title_add != null && description_add != null && temp_image != null) {
                             setErrorMessage(false)
-                            props.newExperience(card_title_add, description_add, temp_image);
+                            props.newProject(card_title_add, description_add, temp_image);
                             handleClose();
                             setTempImg(null)
                             setCardTitle(null)
@@ -100,4 +100,4 @@ function AddExperience(props) {
     );
 }
 
-export default AddExperience;
+export default AddProject;

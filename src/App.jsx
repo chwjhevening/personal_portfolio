@@ -21,8 +21,14 @@ const App = () => {
         <Sidebar>
           <Topbar signedIn={signedIn} openLoginPage={setOpenLogin} signIn={signIn} />
           <Routes>
-            {/* TODO: create route paths for ./, /home, ./projects, and ./experiences 
+            {/* DONE: create route paths for ./, /home, ./projects, and ./experiences 
             passing in attribute signed in to communicate to the page whether you are currently signed in */}
+            <Route path="/">
+              <Route index element={<Home />} />
+              <Route path="home" element={<Home />} />
+              <Route path="experiences" element={<Experiences signedIn={signedIn}/>} />
+              <Route path="projects" element={<Projects signedIn={signedIn}/>} />
+            </Route>
           </Routes>
         </Sidebar>
       </BrowserRouter>

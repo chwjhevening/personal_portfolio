@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineEdit, AiTwotoneMobile } from 'react-icons/ai';
 
 
-function AddExperience(props) {
-    const [card_title_add, setCardTitle] = useState(null)
-    const [description_add, setDescription] = useState(null)
-    const [show, setShow] = useState(false);
-    const [temp_image, setTempImg] = useState()
-    const [errorMessage, setErrorMessage] = useState(false);
+function EditProject(props) {
+    const [card_title_edit, setCardTitle] = useState(props.title)
+    const [description_edit, setDescription] = useState(props.description)
+    const [show, setShow] = useState(false)
+    const [temp_image, setTempImg] = useState(props.image)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -21,16 +20,13 @@ function AddExperience(props) {
 
     return (
         <>
-            <div className="add_button"
+            <div className="edit"
                 // DONE: make it that this button only shows when signed in 
                 style={{ display: props.signedIn ? "block" : "none" }}
                 // DONE: open the pop up modal when clicked
-                onClick={() => {
-                    handleShow()
-                    setErrorMessage(false)
-                }}
+                onClick={handleShow}
             >
-                <AiOutlinePlus />
+                <AiOutlineEdit />
             </div>
 
             <Modal
@@ -38,61 +34,51 @@ function AddExperience(props) {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
-                errorMessage={errorMessage}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Add Experience</Modal.Title>
+                    <Modal.Title>Update Project</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form id='editmodal' >
                         {/* DONE: Create a similar form like the login page
-                        with the addition of file input on the top
-                        make sure you add a preview of the image above the file upload button when there is one uploaded
-                        Hint: the className for the image you can use profile_pic 
-                        */}
+                                  with the addition of file input on the top
+                                  make sure you add a preview of the image above the file upload button
+                            Hint: the className for the image you can use profile_pic */}
                         <h2 className='form_label'>
                             Picture
                         </h2>
                         <div className='edit_personal_info_description'>
                             <input className='' type="file" onChange={(e) => handleImage(e)} />
-                            {temp_image ? <img src={temp_image} height="36" alt="..." /> : null}
+                            <img src={temp_image} height="36" alt="..." />
                         </div>
                         <h2 className='form_label'>
                             Title
                         </h2>
                         <input className='edit_personal_info_description' type="text"
-                            placeholder="Add a title..."
+                            placeholder={props.title}
+                            value={card_title_edit}
                             onChange={(e) => setCardTitle(e.target.value)}
                         />
                         <h2 className='form_label'>
                             Description
                         </h2>
                         <input className='edit_personal_info_description' type="text"
-                            placeholder="Add some description..."
+                            placeholder={props.description}
+                            value={description_edit}
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>
-                    {errorMessage ? "Please enter all fields" : ""}
                     <Button variant="secondary" onClick={handleClose}>
-                        Cancel
+                        Close
                     </Button>
                     <Button variant="primary" form='editmodal' onClick={() => {
-                        // close pop up and update experience
-                        if (card_title_add != null && description_add != null && temp_image != null) {
-                            setErrorMessage(false)
-                            props.newExperience(card_title_add, description_add, temp_image);
-                            handleClose();
-                            setTempImg(null)
-                            setCardTitle(null)
-                            setDescription(null)
-                        }
-                        else {
-                            setErrorMessage(true)
-                        }
+                        // DONE: close pop up and update experience card
+                        props.updateProject(props.id, card_title_edit, description_edit, temp_image)
+                        handleClose()
                     }}>
-                        Add
+                        Update
                     </Button>
                 </Modal.Footer>
             </Modal >
@@ -100,4 +86,4 @@ function AddExperience(props) {
     );
 }
 
-export default AddExperience;
+export default EditProject;

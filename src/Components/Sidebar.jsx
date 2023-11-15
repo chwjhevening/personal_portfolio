@@ -9,19 +9,33 @@ const Sidebar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
-        // TODO: add paths to home, project, experience page
+        // DONE: add paths to home, project, experience page
+        { id: 1, title: 'Home', link: '/home', icon: <BsFillHouseDoorFill /> },
+        { id: 2, title: 'Experiences', link: '/experiences', icon: <BsLaptopFill /> },
+        { id: 3, title: 'Project', link: '/projects', icon: <BsFillLightbulbFill /> },
     ]
     return (
         <div className="sidebar_container">
-            <div className="sidebar">
+            <div className="sidebar" style={{ width: isOpen ? "" : "60px" }} >
                 {
-                    // TODO: using map to loop through menuItem to create navlink for all three navigation buttons
-                    // TODO: hide the texts when sidebar is collapsed 
+                    // DONE: using map to loop through menuItem to create navlink for all three navigation buttons
+                    // DONE: hide the texts when sidebar is collapsed 
                     // hint, classname for NavLink is link, classname for icon is icon, and classname for the text on the links is link_text
+                    menuItem.map(item =>
+                        <NavLink to={item.link} className="link">
+                            <div className="icon" >
+                                {item.icon}
+                            </div>
+                            <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>
+                                {item.title}
+                            </div>
+                        </NavLink>
+                    )
                 }
                 <div className='toggle_container'>
-                    {/* TODO:  add function to make the sidebar collapsable*/}
-                    <div className="extention_toggle">
+                    {/* DONE:  add function to make the sidebar collapsable*/}
+                    {/*        Some redneck method is used for this function*/}
+                    <div className="extention_toggle" onClick={toggle}>
                         <AiOutlineMenu />
                     </div>
                 </div>
